@@ -6,7 +6,7 @@ import "./globals.css"
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.sosamotos.com.ar"),
   title: "Sosa Motos",
-  description: "Web oficial de Sosa Motos",
+  description: "Web demo de Sosa Motos",
   generator: "v0.dev",
   icons: {
     icon: "/sosamotos.jpeg",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     url: "https://www.sosamotos.com.ar",
     siteName: "Sosa Motos",
     title: "Sosa Motos",
-    description: "Web oficial de Sosa Motos",
+    description: "Web demo de Sosa Motos",
     images: [
       {
         url: "/sosamotos.jpeg",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Sosa Motos",
-    description: "Web oficial de Sosa Motos",
+    description: "Web demo de Sosa Motos",
     images: ["/sosamotos.jpeg"],
   },
 }
