@@ -573,7 +573,8 @@ export default function LandingPage() {
       </section>
 
       <div className="flex flex-col">
-      {/* Sección de Premios */}
+      {/* Sección de Premios — temporalmente oculta */}
+      {false && (
       <section className="order-2 lg:order-1 py-16 border-t border-gray-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -635,6 +636,7 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* Sección FAQ */}
       <section className="order-3 lg:order-2 py-16 border-t border-gray-900">
