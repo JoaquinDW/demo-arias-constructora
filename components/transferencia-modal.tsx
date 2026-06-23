@@ -30,8 +30,8 @@ export function TransferenciaModal({
   onClose,
   pack,
   onSubmit,
-  alias = "sosamotos",
-  titular = "Agustín Sosa",
+  alias = "ariasezequiel",
+  titular = "Arias Ezequiel",
 }: TransferenciaModalProps) {
   const [formData, setFormData] = useState({
     nombre: "",
@@ -146,64 +146,65 @@ export function TransferenciaModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-md bg-[#111] text-white border-0 px-1 py-10 lg:py-2 overflow-hidden max-h-[95vh] overflow-y-auto rounded-2xl">
+      <DialogContent className="sm:max-w-md bg-white text-[#171717] border-2 border-[#171717] rounded-none px-1 py-10 lg:py-2 overflow-hidden max-h-[95vh] overflow-y-auto">
         {/* Header */}
-        <div className="bg-[#111] pt-8 pb-4 px-6 text-center">
-          <h2 className="text-2xl font-extrabold uppercase tracking-wide text-white">
+        <div className="bg-graphite pt-8 pb-5 px-6 text-center -mx-1 -mt-10 lg:-mt-2 mb-4 border-b-2 border-[#72BF44]">
+          <h2 className="text-2xl font-display font-bold uppercase tracking-tight text-white">
             Completá tu compra
           </h2>
-          <p className="text-gray-400 text-sm mt-1">
+          <p className="text-neutral-400 text-sm mt-1">
             Transferí y cargá el comprobante
           </p>
         </div>
 
         {/* Monto destacado */}
-        <div className="mx-6 mb-4 rounded-xl bg-[#1a1a1a] border border-[#333] p-4 text-center">
-          <p className="text-sm text-gray-400 mb-1">Total a transferir</p>
-          <p className="text-3xl font-black text-red-500">
+        <div className="mx-6 mb-4 bg-[#72BF44]/15 border-2 border-[#171717] hard-shadow-sm p-4 text-center">
+          <p className="text-xs font-display font-semibold uppercase tracking-[0.18em] text-neutral-600 mb-1">Total a transferir</p>
+          <p className="text-3xl font-display font-bold text-[#171717] tabular-nums">
             ${pack.precio.toLocaleString()}
           </p>
-          <p className="text-xs text-gray-500 mt-1">
+          <p className="text-xs text-neutral-500 mt-1">
             {pack.chances} {pack.chances === 1 ? "chance" : "chances"}
           </p>
         </div>
 
         {/* Alias */}
-        <div className="mx-6 mb-5 rounded-xl bg-[#1a1a1a] border border-[#333] p-4">
-          <p className="text-xs text-gray-400 uppercase tracking-widest mb-2 font-semibold">
+        <div className="mx-6 mb-5 bg-neutral-50 border-2 border-[#171717] p-4">
+          <p className="text-xs text-neutral-600 uppercase tracking-[0.18em] mb-2 font-display font-semibold">
             Alias
           </p>
           <div className="flex items-center gap-2">
-            <div className="flex-1 bg-black rounded-lg border border-red-900/50 px-4 py-3">
-              <span className="font-mono text-base text-red-400 tracking-wide">
+            <div className="flex-1 bg-white border-2 border-[#171717] px-4 py-3">
+              <span className="font-mono text-base text-[#171717] font-bold tracking-wide">
                 {alias}
               </span>
             </div>
             <button
               type="button"
               onClick={copiarAlias}
-              className="flex items-center justify-center w-11 h-11 rounded-lg bg-red-600 hover:bg-red-700 transition-colors flex-shrink-0"
+              className="flex items-center justify-center w-11 h-11 bg-[#72BF44] border-2 border-[#171717] hover:bg-[#7fd14c] transition-colors flex-shrink-0"
+              aria-label="Copiar alias"
             >
               {aliasCopiado ? (
-                <Check className="w-5 h-5 text-white" />
+                <Check className="w-5 h-5 text-[#171717]" />
               ) : (
-                <Copy className="w-5 h-5 text-white" />
+                <Copy className="w-5 h-5 text-[#171717]" />
               )}
             </button>
           </div>
-          <p className="text-xs text-gray-500 mt-2">Titular: {titular}</p>
+          <p className="text-xs text-neutral-500 mt-2">Titular: {titular}</p>
         </div>
 
         {/* Formulario */}
         <form onSubmit={handleSubmit} className="px-6 pb-6 space-y-3">
-          <p className="text-xs text-gray-400 uppercase tracking-widest font-semibold mb-3">
+          <p className="text-xs text-neutral-600 uppercase tracking-[0.18em] font-display font-semibold mb-3">
             Tus datos
           </p>
 
           <div>
             <Label
               htmlFor="nombre"
-              className="text-gray-400 text-xs mb-1 block"
+              className="text-neutral-600 text-xs mb-1 block"
             >
               Nombre completo *
             </Label>
@@ -213,15 +214,15 @@ export function TransferenciaModal({
               value={formData.nombre}
               onChange={handleInputChange}
               placeholder="Juan Pérez"
-              className="bg-[#1a1a1a] border-[#333] text-white placeholder:text-gray-600 focus:border-red-600 focus-visible:ring-red-600/30 h-11"
+              className="bg-white border-2 border-[#171717] rounded-none text-[#171717] placeholder:text-neutral-400 focus-visible:ring-2 focus-visible:ring-[#72BF44] h-11"
               disabled={loading}
             />
           </div>
 
           <div>
-            <Label htmlFor="email" className="text-gray-400 text-xs mb-1 block">
+            <Label htmlFor="email" className="text-neutral-600 text-xs mb-1 block">
               Email{" "}
-              <span className="text-gray-600">(recibís tus números acá)</span>
+              <span className="text-neutral-400">(recibís tus números acá)</span>
             </Label>
             <Input
               id="email"
@@ -230,7 +231,7 @@ export function TransferenciaModal({
               value={formData.email}
               onChange={handleInputChange}
               placeholder="juan@email.com"
-              className="bg-[#1a1a1a] border-[#333] text-white placeholder:text-gray-600 focus:border-red-600 focus-visible:ring-red-600/30 h-11"
+              className="bg-white border-2 border-[#171717] rounded-none text-[#171717] placeholder:text-neutral-400 focus-visible:ring-2 focus-visible:ring-[#72BF44] h-11"
               disabled={loading}
             />
           </div>
@@ -238,7 +239,7 @@ export function TransferenciaModal({
           <div>
             <Label
               htmlFor="contacto"
-              className="text-gray-400 text-xs mb-1 block"
+              className="text-neutral-600 text-xs mb-1 block"
             >
               WhatsApp o Instagram *
             </Label>
@@ -248,23 +249,23 @@ export function TransferenciaModal({
               value={formData.contacto}
               onChange={handleInputChange}
               placeholder="3794123456 o @usuario"
-              className="bg-[#1a1a1a] border-[#333] text-white placeholder:text-gray-600 focus:border-red-600 focus-visible:ring-red-600/30 h-11"
+              className="bg-white border-2 border-[#171717] rounded-none text-[#171717] placeholder:text-neutral-400 focus-visible:ring-2 focus-visible:ring-[#72BF44] h-11"
               disabled={loading}
             />
           </div>
 
           {/* Comprobante */}
           <div>
-            <Label className="text-gray-400 text-xs mb-1 block uppercase tracking-widest font-semibold">
+            <Label className="text-neutral-600 text-xs mb-1 block uppercase tracking-[0.18em] font-display font-semibold">
               Comprobante *
             </Label>
             <div
-              className={`mt-1 border-2 border-dashed rounded-xl p-5 text-center cursor-pointer transition-colors ${
+              className={`mt-1 border-2 border-dashed p-5 text-center cursor-pointer transition-colors ${
                 dragOver
-                  ? "border-red-500 bg-red-950/20"
+                  ? "border-[#72BF44] bg-[#72BF44]/10"
                   : comprobanteFile
-                    ? "border-green-700 bg-green-950/20"
-                    : "border-[#333] hover:border-red-800 bg-[#1a1a1a]"
+                    ? "border-[#72BF44] bg-[#72BF44]/10"
+                    : "border-neutral-400 hover:border-[#72BF44] bg-neutral-50"
               }`}
               onDrop={handleDrop}
               onDragOver={(e) => {
@@ -289,12 +290,12 @@ export function TransferenciaModal({
               {comprobanteFile ? (
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-2">
-                    <FileImage className="w-6 h-6 text-green-400 flex-shrink-0" />
+                    <FileImage className="w-6 h-6 text-[#5da336] flex-shrink-0" />
                     <div className="text-left">
-                      <p className="text-sm font-medium text-green-400 truncate max-w-[180px]">
+                      <p className="text-sm font-medium text-[#171717] truncate max-w-[180px]">
                         {comprobanteFile.name}
                       </p>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-neutral-500">
                         {(comprobanteFile.size / 1024 / 1024).toFixed(2)} MB
                       </p>
                     </div>
@@ -305,19 +306,20 @@ export function TransferenciaModal({
                       e.stopPropagation()
                       setComprobanteFile(null)
                     }}
-                    className="w-7 h-7 rounded-full bg-[#333] hover:bg-[#444] flex items-center justify-center flex-shrink-0"
+                    className="w-7 h-7 bg-white border-2 border-[#171717] hover:bg-neutral-100 flex items-center justify-center flex-shrink-0"
                     disabled={loading}
+                    aria-label="Quitar comprobante"
                   >
-                    <X className="w-4 h-4 text-gray-300" />
+                    <X className="w-4 h-4 text-[#171717]" />
                   </button>
                 </div>
               ) : (
                 <div className="space-y-1">
-                  <Upload className="w-7 h-7 text-gray-500 mx-auto" />
-                  <p className="text-sm text-gray-300">
+                  <Upload className="w-7 h-7 text-neutral-500 mx-auto" />
+                  <p className="text-sm text-[#171717] font-medium">
                     Tocá para subir el comprobante
                   </p>
-                  <p className="text-xs text-gray-600">
+                  <p className="text-xs text-neutral-500">
                     JPG, PNG, WEBP o PDF · máx. 5MB
                   </p>
                 </div>
@@ -332,14 +334,14 @@ export function TransferenciaModal({
               variant="ghost"
               onClick={handleClose}
               disabled={loading}
-              className="flex-1 text-gray-400 hover:text-white hover:bg-[#222] border border-[#333]"
+              className="flex-1 text-[#171717] hover:bg-neutral-100 border-2 border-[#171717] rounded-none font-display font-semibold uppercase tracking-wide"
             >
               Cancelar
             </Button>
             <Button
               type="submit"
               disabled={loading}
-              className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold text-base h-11"
+              className="flex-1 btn-neon text-base h-11"
             >
               {loading ? "Enviando..." : "Finalizar compra"}
             </Button>

@@ -38,45 +38,43 @@ export function GanadoresExpress({
   }
 
   return (
-    <section className="py-12 border-t border-gray-900">
+    <section className="py-16 border-t-2 border-[#171717]">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-8">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#ff0040] mb-3">
-            {contenido.express_kicker}
-          </p>
-          <h2 className="text-4xl lg:text-5xl font-display tracking-wider text-white flex items-center justify-center gap-3">
-            <Trophy className="w-7 h-7 text-yellow-500" />
+        <div className="text-center mb-10">
+          <span className="kicker mx-auto mb-3">{contenido.express_kicker}</span>
+          <h2 className="text-4xl lg:text-5xl font-display font-bold tracking-tight uppercase text-[#171717] flex items-center justify-center gap-3">
+            <Trophy className="w-7 h-7 text-[#72BF44]" />
             {contenido.express_titulo}
           </h2>
         </div>
 
-        <div className="max-w-3xl mx-auto space-y-2">
+        <div className="max-w-3xl mx-auto space-y-3">
           {ganadores.map((ganador, index) => (
             <div
               key={ganador.id}
-              className="bg-[#111] border border-gray-800 rounded-xl px-4 py-3 md:px-6 md:py-4 flex items-center justify-between gap-3 hover:border-gray-700 transition-colors duration-200"
+              className="bg-white border-2 border-[#171717] hard-shadow-sm px-4 py-3 md:px-6 md:py-4 flex items-center justify-between gap-3 hover:-translate-x-0.5 hover:-translate-y-0.5 transition-transform duration-150"
               style={{ animationDelay: `${index * 80}ms` }}
             >
               {/* Número */}
-              <div className="bg-[#ff0040]/10 border border-[#ff0040]/20 rounded-lg px-3 py-2 flex-shrink-0 min-w-[60px] text-center">
-                <p className="text-[#ff0040] font-mono font-bold text-base md:text-xl">
+              <div className="bg-[#72BF44] border-2 border-[#171717] px-3 py-2 flex-shrink-0 min-w-[60px] text-center">
+                <p className="text-[#171717] font-mono font-bold text-base md:text-xl tabular-nums">
                   {ganador.numero_ganador}
                 </p>
               </div>
 
               {/* Premio */}
               <div className="flex-1 text-center">
-                <p className="text-white font-semibold text-sm md:text-base">
+                <p className="text-[#171717] font-display font-bold uppercase tracking-tight text-sm md:text-base">
                   {ganador.premio_monto}
                 </p>
               </div>
 
               {/* Nombre */}
               <div className="flex items-center gap-2 flex-shrink-0 max-w-[160px]">
-                <p className="text-gray-400 text-sm font-medium truncate">
+                <p className="text-neutral-600 text-sm font-medium truncate">
                   {ganador.nombre_ganador || "Anónimo"}
                 </p>
-                <Trophy className="w-4 h-4 text-yellow-500/70 flex-shrink-0" />
+                <Trophy className="w-4 h-4 text-[#72BF44] flex-shrink-0" />
               </div>
             </div>
           ))}

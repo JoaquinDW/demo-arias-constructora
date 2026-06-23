@@ -144,8 +144,8 @@ export default function BackofficePage() {
     setEditarCuentaTransferenciaModalAbierto,
   ] = useState(false)
   const [configTransferencia, setConfigTransferencia] = useState({
-    alias: "sosamotos",
-    titular: "Agustín Sosa",
+    alias: "ariasezequiel",
+    titular: "Arias Ezequiel",
   })
   const [premiosSecundarios, setPremiosSecundarios] =
     useState<PremiosSecundarios>({
@@ -410,22 +410,22 @@ export default function BackofficePage() {
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
     // Borde rojo
-    ctx.strokeStyle = "#ff0040"
+    ctx.strokeStyle = "#72BF44"
     ctx.lineWidth = 3
     ctx.strokeRect(14, 14, canvas.width - 28, canvas.height - 28)
 
-    // Marca (SOSA en blanco, MOTOS en rojo)
+    // Marca (DELFOS en blanco, CONSTRUCTORA en verde)
     ctx.textAlign = "center"
     ctx.font = "bold 30px Arial"
     const marcaY = 70
-    const sosaW = ctx.measureText("SOSA ").width
-    const motosW = ctx.measureText("MOTOS 🏍️").width
-    const marcaStartX = canvas.width / 2 - (sosaW + motosW) / 2
+    const delfosW = ctx.measureText("DELFOS ").width
+    const constructoraW = ctx.measureText("CONSTRUCTORA").width
+    const marcaStartX = canvas.width / 2 - (delfosW + constructoraW) / 2
     ctx.textAlign = "left"
     ctx.fillStyle = "#ffffff"
-    ctx.fillText("SOSA ", marcaStartX, marcaY)
-    ctx.fillStyle = "#ff0040"
-    ctx.fillText("MOTOS 🏍️", marcaStartX + sosaW, marcaY)
+    ctx.fillText("DELFOS ", marcaStartX, marcaY)
+    ctx.fillStyle = "#72BF44"
+    ctx.fillText("CONSTRUCTORA", marcaStartX + delfosW, marcaY)
 
     // Título
     ctx.textAlign = "center"
@@ -433,8 +433,8 @@ export default function BackofficePage() {
     ctx.font = "bold 38px Arial"
     ctx.fillText("COMPROBANTE DE COMPRA", canvas.width / 2, 118)
 
-    // Línea decorativa roja
-    ctx.strokeStyle = "#ff0040"
+    // Línea decorativa verde
+    ctx.strokeStyle = "#72BF44"
     ctx.lineWidth = 4
     ctx.beginPath()
     ctx.moveTo(280, 140)
@@ -442,7 +442,7 @@ export default function BackofficePage() {
     ctx.stroke()
 
     // Mensaje de participación
-    ctx.fillStyle = "#ff0040"
+    ctx.fillStyle = "#72BF44"
     ctx.font = "bold 23px Arial"
     ctx.textAlign = "left"
     ctx.fillText("¡Estás participando por una HONDA WAVE 2026 0KM!", 50, 190)
@@ -481,7 +481,7 @@ export default function BackofficePage() {
 
     // Precio pagado
     yPos += 45
-    ctx.fillStyle = "#ff0040"
+    ctx.fillStyle = "#72BF44"
     ctx.font = "bold 32px Arial"
     ctx.fillText(
       `Total Pagado: $${comprador.precio_pagado.toLocaleString()}`,
@@ -491,7 +491,7 @@ export default function BackofficePage() {
 
     // Números asignados
     yPos += 55
-    ctx.fillStyle = "#ff0040"
+    ctx.fillStyle = "#72BF44"
     ctx.font = "bold 28px Arial"
     ctx.fillText("Tus Números:", 50, yPos)
 
@@ -527,9 +527,9 @@ export default function BackofficePage() {
         "M30 13.75c0.414-0 0.75-0.336 0.75-0.75v0-5c-0-0.414-0.336-0.75-0.75-0.75h-28c-0.414 0-0.75 0.336-0.75 0.75v0 5c0 0.414 0.336 0.75 0.75 0.75v0c1.243 0 2.25 1.007 2.25 2.25s-1.007 2.25-2.25 2.25v0c-0.414 0-0.75 0.336-0.75 0.75v0 5c0 0.414 0.336 0.75 0.75 0.75h28c0.414-0 0.75-0.336 0.75-0.75v0-5c-0-0.414-0.336-0.75-0.75-0.75v0c-1.243 0-2.25-1.007-2.25-2.25s1.007-2.25 2.25-2.25v0z",
       )
 
-      // Gradiente rojo de marca
+      // Gradiente verde de marca
       const gradient = ctx.createLinearGradient(0, 8, 0, 24)
-      gradient.addColorStop(0, "#ff0040") // Rojo neón
+      gradient.addColorStop(0, "#72BF44") // Verde Delfos
       gradient.addColorStop(1, "#cc0033") // Rojo más oscuro
       ctx.fillStyle = gradient
       ctx.fill(ticketPath)
@@ -581,7 +581,7 @@ export default function BackofficePage() {
 
     // Nota final
     // yPos += 42
-    // ctx.fillStyle = "#ff0040"
+    // ctx.fillStyle = "#72BF44"
     // ctx.font = "bold 21px Arial"
     // ctx.fillText("¡Mucha suerte y siempre con fe! 🙏", canvas.width / 2, yPos)
 
@@ -1635,7 +1635,7 @@ export default function BackofficePage() {
                                     href={`https://wa.me/${
                                       comprador.telefono
                                     }?text=${encodeURIComponent(
-                                      `Hola ${comprador.nombre}! Te hablo de Sosa Motos...`,
+                                      `Hola ${comprador.nombre}! Te hablo de Delfos Constructora...`,
                                     )}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -1939,7 +1939,7 @@ export default function BackofficePage() {
                                       href={`https://wa.me/${
                                         comprador.telefono
                                       }?text=${encodeURIComponent(
-                                        `Hola ${comprador.nombre}! Te hablo de Sosa Motos...`,
+                                        `Hola ${comprador.nombre}! Te hablo de Delfos Constructora...`,
                                       )}`}
                                       target="_blank"
                                       rel="noopener noreferrer"

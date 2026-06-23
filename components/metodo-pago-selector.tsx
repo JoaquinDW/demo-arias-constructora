@@ -22,8 +22,8 @@ export function MetodoPagoSelector({
   pack,
   onMercadoPago,
   onTransferencia,
-  alias = "sosamotos",
-  titular = "Agustín Sosa",
+  alias = "ariasezequiel",
+  titular = "Arias Ezequiel",
 }: MetodoPagoSelectorProps) {
   const [aliasCopiado, setAliasCopiado] = useState(false)
   const { toast } = useToast()

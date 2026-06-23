@@ -30,16 +30,14 @@ export function RedesSociales({ contenido }: { contenido: ContenidoSitio }) {
   if (redes.length === 0) return null
 
   return (
-    <section className="py-16 border-t border-gray-900">
+    <section className="py-20 border-t-2 border-[#171717]">
       <div className="container mx-auto px-4 max-w-2xl text-center">
-        <p className="text-xs font-semibold uppercase tracking-widest text-[#ff0040] mb-3">
-          {contenido.redes_kicker}
-        </p>
-        <h2 className="text-4xl lg:text-5xl font-display tracking-wider text-white mb-3">
+        <span className="kicker mx-auto mb-3">{contenido.redes_kicker}</span>
+        <h2 className="text-4xl lg:text-5xl font-display font-bold tracking-tight uppercase text-[#171717] mb-3">
           {contenido.redes_titulo}
         </h2>
         {contenido.redes_descripcion && (
-          <p className="text-gray-500 text-sm max-w-md mx-auto">
+          <p className="text-neutral-600 text-sm max-w-md mx-auto">
             {contenido.redes_descripcion}
           </p>
         )}
@@ -53,9 +51,9 @@ export function RedesSociales({ contenido }: { contenido: ContenidoSitio }) {
                 href={red.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 bg-[#111] border border-gray-800 hover:border-[#ff0040]/60 text-gray-300 hover:text-white px-5 py-3 rounded-xl text-sm font-medium tracking-wide transition-colors duration-200"
+                className="inline-flex items-center gap-2.5 bg-white border-2 border-[#171717] hard-shadow-sm hover:-translate-x-0.5 hover:-translate-y-0.5 text-[#171717] px-5 py-3 text-sm font-display font-semibold uppercase tracking-wide transition-transform duration-150"
               >
-                <Icono className="w-4 h-4 text-[#ff0040]" />
+                <Icono className="w-4 h-4 text-[#72BF44]" />
                 {red.etiqueta || red.url}
               </a>
             )

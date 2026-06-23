@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
             id: Date.now()
               .toString()
               .concat("", Math.random().toString(36).substring(2, 15)),
-            title: `${chances} Remeras digitales - Sosa Motos`,
+            title: `${chances} Chances - Delfos Constructora`,
             quantity: 1,
             unit_price: precio,
           },

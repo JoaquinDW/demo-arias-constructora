@@ -57,7 +57,8 @@ export default function LandingPage() {
     created_at: string
   }> | null>(null)
   const [consultaError, setConsultaError] = useState<string | null>(null)
-  const [premiosSecundarios, setPremiosSecundarios] = useState<PremiosSecundarios | null>(null)
+  const [premiosSecundarios, setPremiosSecundarios] =
+    useState<PremiosSecundarios | null>(null)
   const [contenido, setContenido] = useState<ContenidoSitio>(CONTENIDO_DEFAULTS)
   const { toast } = useToast()
 
@@ -314,9 +315,11 @@ export default function LandingPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-dark-gradient flex items-center justify-center">
-        <div className="text-center space-y-4">
-          <div className="w-12 h-12 border-2 border-[#ff0040] border-t-transparent rounded-full animate-spin mx-auto opacity-80"></div>
-          <p className="text-gray-500 text-sm tracking-widest uppercase">Cargando</p>
+        <div className="text-center space-y-5">
+          <div className="w-12 h-12 border-[3px] border-[#171717] border-t-[#72BF44] animate-spin mx-auto"></div>
+          <p className="text-neutral-500 text-xs font-display font-semibold tracking-[0.3em] uppercase">
+            Cargando
+          </p>
         </div>
       </div>
     )
@@ -327,27 +330,36 @@ export default function LandingPage() {
       <div className="min-h-screen bg-dark-gradient flex flex-col">
         <Header marca={contenido.marca} />
         <div className="flex-1 flex items-center justify-center px-4">
-          <div className="text-center space-y-6 max-w-md">
-            <div className="w-20 h-20 rounded-full overflow-hidden ring-2 ring-gray-700 mx-auto">
-              <img src="/sosamotos.jpeg" alt={contenido.marca} className="w-full h-full object-cover" />
+          <div className="text-center space-y-7 max-w-md">
+            <div className="w-24 h-24 bg-white border-2 border-[#171717] hard-shadow overflow-hidden mx-auto p-2">
+              <img
+                src="/delfos-logo.png"
+                alt={contenido.marca}
+                className="w-full h-full object-contain"
+              />
             </div>
-            <div className="space-y-2">
-              <h2 className="text-3xl font-display tracking-wider text-white uppercase">{contenido.proximamente_titulo}</h2>
-              <p className="text-gray-500 text-sm">{contenido.proximamente_descripcion}</p>
+            <div className="space-y-3">
+              <span className="kicker mx-auto">En obra</span>
+              <h2 className="text-4xl font-display font-bold tracking-tight text-[#171717] uppercase">
+                {contenido.proximamente_titulo}
+              </h2>
+              <p className="text-neutral-600 text-sm max-w-xs mx-auto">
+                {contenido.proximamente_descripcion}
+              </p>
             </div>
             <Link
               href={contenido.whatsapp_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block btn-neon px-6 py-3 rounded-lg font-semibold text-sm tracking-wide"
+              className="inline-block btn-neon px-7 py-3.5 text-sm"
             >
               {contenido.proximamente_boton}
             </Link>
           </div>
         </div>
         <RedesSociales contenido={contenido} />
-        <footer className="bg-black border-t border-gray-900 py-6">
-          <div className="container mx-auto px-4 text-center text-gray-600 text-xs tracking-wide">
+        <footer className="bg-graphite border-t-2 border-[#72BF44] py-6">
+          <div className="container mx-auto px-4 text-center text-neutral-400 text-xs tracking-wide">
             <p>{contenido.footer_copyright}</p>
           </div>
         </footer>
@@ -361,10 +373,11 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden min-h-screen flex items-center">
-        {/* Background Effects — muy sutiles */}
+        {/* Elementos geométricos de fondo */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-20 w-80 h-80 bg-[#ff0040]/4 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-[#ff0040]/3 rounded-full blur-3xl"></div>
+          <div className="absolute -top-10 -right-10 w-72 h-72 border-2 border-[#171717]/10 rotate-12"></div>
+          <div className="absolute top-32 right-24 w-40 h-40 bg-[#72BF44]/10 rotate-45"></div>
+          <div className="absolute bottom-16 left-8 w-24 h-24 border-2 border-[#72BF44]/30"></div>
         </div>
 
         <div className="relative container mx-auto px-4 py-10 lg:py-20">
@@ -381,15 +394,15 @@ export default function LandingPage() {
                 <IphoneCarousel />
 
                 {/* Floating badge */}
-                <div className="absolute -top-4 inset-x-0 mx-auto w-fit lg:inset-x-auto lg:right-16 lg:mx-0 xl:-right-2 bg-[#ff0040] text-white px-4 py-1.5 rounded-full font-semibold text-xs tracking-widest uppercase z-30 flex items-center gap-1.5">
+                <div className="absolute -top-4 inset-x-0 mx-auto w-fit lg:inset-x-auto lg:right-16 lg:mx-0 xl:-right-2 bg-[#72BF44] text-[#171717] border-2 border-[#171717] hard-shadow-sm px-4 py-1.5 font-display font-bold text-xs tracking-widest uppercase z-30 flex items-center gap-1.5">
                   <Trophy className="w-3 h-3" />
                   {contenido.hero_badge}
                 </div>
               </div>
 
               {/* Título bajo el carousel */}
-              <div className="text-center mt-8">
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display tracking-widest text-[#ff0040] uppercase">
+              <div className="text-center mt-10">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold tracking-tight text-[#171717] uppercase leading-[0.95]">
                   {conPlaceholders(contenido.hero_titulo, {
                     premio: sorteo.titulo_remera || "Remera Exclusiva",
                   })}
@@ -406,31 +419,33 @@ export default function LandingPage() {
               }`}
             >
               {sorteo?.estado !== "sorteado" && (
-                <p className="order-1 lg:order-1 text-2xl lg:text-3xl text-gray-300 font-light leading-snug">
+                <p className="order-1 lg:order-1 text-2xl lg:text-3xl text-neutral-700 font-light leading-snug">
                   {contenido.hero_subtitulo}
                 </p>
               )}
 
               {/* Progress Bar / Evento finalizado */}
               {sorteo?.estado === "sorteado" ? (
-                <div className="order-3 lg:order-2 bg-[#111] border border-gray-800 rounded-xl p-6 text-center">
-                  <p className="text-lg font-semibold text-gray-300">
+                <div className="order-3 lg:order-2 bg-white border-2 border-[#171717] hard-shadow p-6 text-center">
+                  <p className="text-lg font-display font-bold uppercase tracking-tight text-[#171717]">
                     Evento finalizado
                   </p>
                 </div>
               ) : (
-                <div className="order-3 lg:order-2 space-y-4 bg-[#111] border border-gray-800 rounded-xl p-5 sm:p-6">
+                <div className="order-3 lg:order-2 space-y-4 bg-white border-2 border-[#171717] hard-shadow p-5 sm:p-6">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium text-gray-400 uppercase tracking-widest">
+                    <span className="text-xs font-display font-semibold text-neutral-500 uppercase tracking-[0.18em]">
                       {contenido.hero_chances_label}
                     </span>
                   </div>
-                  <AnimatedProgress value={porcentajeVendido} className="h-3" />
+                  <AnimatedProgress value={porcentajeVendido} className="h-4" />
                   <div className="flex items-baseline gap-2">
-                    <span className="text-3xl font-display tracking-wide text-[#ff0040]">
+                    <span className="text-4xl font-display font-bold tracking-tight text-[#171717] tabular-nums">
                       {porcentajeVendido.toFixed(1)}%
                     </span>
-                    <span className="text-sm text-gray-500">{contenido.hero_completado_label}</span>
+                    <span className="text-sm text-neutral-500">
+                      {contenido.hero_completado_label}
+                    </span>
                   </div>
                 </div>
               )}
@@ -439,49 +454,53 @@ export default function LandingPage() {
               {sorteoCompleto && (
                 <div className="order-4 lg:order-3 space-y-4">
                   {sorteo?.estado === "completo" && (
-                    <div className="bg-yellow-950/30 border border-yellow-800/40 text-yellow-300 px-5 py-4 rounded-xl">
-                      <h3 className="text-base font-semibold mb-1 flex items-center gap-2">
-                        <Clock className="w-4 h-4" />
+                    <div className="bg-white border-2 border-[#171717] border-l-[6px] border-l-amber-500 hard-shadow-sm text-[#171717] px-5 py-4">
+                      <h3 className="text-base font-display font-bold uppercase tracking-tight mb-1 flex items-center gap-2">
+                        <Clock className="w-4 h-4 text-amber-600" />
                         {contenido.hero_completo_titulo}
                       </h3>
-                      <p className="text-sm text-yellow-300/70">
+                      <p className="text-sm text-neutral-600">
                         {contenido.hero_completo_descripcion}
                       </p>
                       {sorteo.fecha_sorteo_realizado && (
-                        <p className="text-xs opacity-60 mt-1">
+                        <p className="text-xs text-neutral-400 mt-1">
                           Prendas completadas el{" "}
-                          {new Date(sorteo.fecha_sorteo_realizado).toLocaleDateString("es-AR")}
+                          {new Date(
+                            sorteo.fecha_sorteo_realizado,
+                          ).toLocaleDateString("es-AR")}
                         </p>
                       )}
                     </div>
                   )}
 
                   {sorteo?.estado === "sorteado" && (
-                    <div className="bg-green-950/30 border border-green-800/40 text-green-300 px-5 py-4 rounded-xl">
-                      <h3 className="text-base font-semibold mb-2 flex items-center gap-2">
-                        <Trophy className="w-4 h-4" />
+                    <div className="bg-white border-2 border-[#171717] border-l-[6px] border-l-[#72BF44] hard-shadow-sm text-[#171717] px-5 py-4">
+                      <h3 className="text-base font-display font-bold uppercase tracking-tight mb-2 flex items-center gap-2">
+                        <Trophy className="w-4 h-4 text-[#72BF44]" />
                         {contenido.hero_sorteado_titulo}
                       </h3>
                       {sorteo.numero_ganador && (
                         <div className="space-y-1.5">
                           {sorteo.ganador_nombre && (
-                            <p className="text-sm text-white">
+                            <p className="text-sm text-neutral-700">
                               Ganador:{" "}
-                              <span className="font-semibold text-green-400">
+                              <span className="font-bold text-[#171717]">
                                 {sorteo.ganador_nombre}
                               </span>
                             </p>
                           )}
-                          <p className="text-sm text-white">
+                          <p className="text-sm text-neutral-700">
                             Número Ganador:{" "}
-                            <span className="font-mono font-bold text-green-400 text-lg">
+                            <span className="font-mono font-bold text-[#171717] text-lg bg-[#72BF44] px-2 py-0.5 border border-[#171717]">
                               {sorteo.numero_ganador}
                             </span>
                           </p>
-                          <p className="text-xs text-green-300/60">
+                          <p className="text-xs text-neutral-500">
                             Según la Quiniela de Buenos Aires del{" "}
                             {sorteo.updated_at &&
-                              new Date(sorteo.updated_at).toLocaleDateString("es-AR")}
+                              new Date(sorteo.updated_at).toLocaleDateString(
+                                "es-AR",
+                              )}
                           </p>
                         </div>
                       )}
@@ -489,12 +508,15 @@ export default function LandingPage() {
                   )}
 
                   {(sorteo?.estado === "cerrado" ||
-                    (sorteo?.estado && !sorteo.estado.match(/completo|sorteado/))) && (
-                    <div className="bg-[#ff0040]/10 border border-[#ff0040]/20 text-white px-5 py-4 rounded-xl">
-                      <h3 className="text-base font-semibold mb-1">
+                    (sorteo?.estado &&
+                      !sorteo.estado.match(/completo|sorteado/))) && (
+                    <div className="bg-white border-2 border-[#171717] border-l-[6px] border-l-[#72BF44] hard-shadow-sm text-[#171717] px-5 py-4">
+                      <h3 className="text-base font-display font-bold uppercase tracking-tight mb-1">
                         {contenido.hero_cerrado_titulo}
                       </h3>
-                      <p className="text-sm text-gray-400">{contenido.hero_cerrado_descripcion}</p>
+                      <p className="text-sm text-neutral-600">
+                        {contenido.hero_cerrado_descripcion}
+                      </p>
                     </div>
                   )}
                 </div>
@@ -514,42 +536,45 @@ export default function LandingPage() {
                       style={{ transitionDelay: `${(index + 3) * 150}ms` }}
                     >
                       {pack.popular && (
-                        <div className="mb-1.5">
-                          <span className="text-[10px] font-semibold uppercase tracking-widest text-[#ff0040] pl-1">
+                        <div className="mb-0 -ml-px">
+                          <span className="inline-block bg-[#72BF44] text-[#171717] border-2 border-[#171717] border-b-0 text-[10px] font-display font-bold uppercase tracking-widest px-3 py-1">
                             {contenido.packs_popular_label}
                           </span>
                         </div>
                       )}
 
                       <div
-                        className={`rounded-xl p-4 sm:p-5 transition-all duration-200 ${
+                        className={`p-4 sm:p-5 transition-all duration-150 border-2 border-[#171717] ${
                           pack.popular
-                            ? "bg-[#ff0040]/8 border border-[#ff0040]/35 hover:border-[#ff0040]/60"
-                            : "bg-[#111] border border-gray-800 hover:border-gray-600"
+                            ? "bg-[#72BF44]/15 hard-shadow hover:-translate-x-0.5 hover:-translate-y-0.5"
+                            : "bg-white hard-shadow-sm hover:-translate-x-0.5 hover:-translate-y-0.5"
                         }`}
                       >
                         <div className="flex items-center justify-between gap-4">
                           <div className="flex-1 min-w-0">
-                            <div className="text-lg sm:text-xl font-semibold text-white">
+                            <div className="text-xl sm:text-2xl font-display font-bold uppercase tracking-tight text-[#171717]">
                               {pack.chances} Chances
                             </div>
                             <div
-                              className={`text-xs font-medium mt-0.5 line-clamp-2 ${
-                                pack.descripcion ? "text-yellow-400/80" : "text-gray-500"
+                              className={`text-xs font-medium mt-1 line-clamp-2 ${
+                                pack.descripcion
+                                  ? "text-neutral-700"
+                                  : "text-neutral-400"
                               }`}
                             >
-                              {pack.descripcion || `${pack.chances} números asignados`}
+                              {pack.descripcion ||
+                                `${pack.chances} números asignados`}
                             </div>
                           </div>
 
                           <div className="text-right flex-shrink-0">
-                            <div className="text-xl sm:text-2xl font-semibold text-[#ff0040]">
+                            <div className="text-xl sm:text-2xl font-display font-bold text-[#171717] tabular-nums">
                               ${pack.precio.toLocaleString()}
                             </div>
                             <Button
                               onClick={() => handleCompra(pack)}
                               size="sm"
-                              className="btn-neon mt-2 px-5 py-1.5 text-xs rounded-lg h-auto"
+                              className="btn-neon mt-2 px-5 py-1.5 text-xs h-auto"
                             >
                               <ShoppingCart className="w-3 h-3 mr-1.5" />
                               {contenido.packs_comprar_boton}
@@ -563,7 +588,7 @@ export default function LandingPage() {
               )}
 
               {!sorteoCompleto && PACKS.length > 1 && (
-                <p className="order-5 lg:order-5 text-xs text-gray-600 text-center tracking-wide">
+                <p className="order-5 lg:order-5 text-xs text-neutral-500 text-center tracking-wide">
                   {contenido.packs_nota}
                 </p>
               )}
@@ -573,212 +598,228 @@ export default function LandingPage() {
       </section>
 
       <div className="flex flex-col">
-      {/* Sección de Premios — temporalmente oculta */}
-      {false && (
-      <section className="order-2 lg:order-1 py-16 border-t border-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#ff0040] mb-3">
-              {contenido.premios_kicker}
-            </p>
-            <h2 className="text-5xl lg:text-7xl font-display tracking-wider text-white">
-              {contenido.premios_titulo}
-            </h2>
-          </div>
+        {/* Sección de Premios — temporalmente oculta */}
+        {false && (
+          <section className="order-2 lg:order-1 py-16 border-t border-gray-900">
+            <div className="container mx-auto px-4">
+              <div className="text-center mb-12">
+                <p className="text-xs font-semibold uppercase tracking-widest text-[#72BF44] mb-3">
+                  {contenido.premios_kicker}
+                </p>
+                <h2 className="text-5xl lg:text-7xl font-display tracking-wider text-white">
+                  {contenido.premios_titulo}
+                </h2>
+              </div>
 
-          <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {/* 1er Premio */}
-            <div className="bg-[#111] border border-gray-800 rounded-xl p-8 text-center hover:border-gray-700 transition-colors duration-200">
-              <p className="text-xs font-semibold uppercase tracking-widest text-yellow-500/70 mb-3">
-                {contenido.premios_primer_label}
-              </p>
-              <p className="text-2xl lg:text-3xl font-display tracking-wide uppercase text-white">
-                {sorteo.titulo_remera || "Remera Exclusiva"}
-              </p>
-            </div>
-
-            {/* Premios Secundarios */}
-            {premiosSecundarios?.visible && premiosSecundarios.numeros.length > 0 && (
-              <div className="bg-[#111] border border-yellow-500/20 rounded-xl p-6 md:p-8">
-                <div className="flex items-center gap-2 mb-4">
-                  <Trophy className="w-4 h-4 text-yellow-500/70" />
-                  <p className="text-xs font-semibold uppercase tracking-widest text-yellow-500/70">
-                    {contenido.premios_sec_label}
+              <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                {/* 1er Premio */}
+                <div className="bg-[#111] border border-gray-800 rounded-xl p-8 text-center hover:border-gray-700 transition-colors duration-200">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-yellow-500/70 mb-3">
+                    {contenido.premios_primer_label}
+                  </p>
+                  <p className="text-2xl lg:text-3xl font-display tracking-wide uppercase text-white">
+                    {sorteo.titulo_remera || "Remera Exclusiva"}
                   </p>
                 </div>
 
-                <p className="text-base font-semibold text-yellow-300 mb-4">
-                  {premiosSecundarios.titulo}
-                </p>
+                {/* Premios Secundarios */}
+                {premiosSecundarios?.visible &&
+                  premiosSecundarios.numeros.length > 0 && (
+                    <div className="bg-[#111] border border-yellow-500/20 rounded-xl p-6 md:p-8">
+                      <div className="flex items-center gap-2 mb-4">
+                        <Trophy className="w-4 h-4 text-yellow-500/70" />
+                        <p className="text-xs font-semibold uppercase tracking-widest text-yellow-500/70">
+                          {contenido.premios_sec_label}
+                        </p>
+                      </div>
 
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {premiosSecundarios.numeros.map((num) => (
-                    <span
-                      key={num}
-                      className="bg-yellow-400/8 border border-yellow-400/25 text-yellow-300 font-mono font-bold text-xl rounded-lg px-4 py-1.5"
-                    >
-                      {num}
-                    </span>
-                  ))}
+                      <p className="text-base font-semibold text-yellow-300 mb-4">
+                        {premiosSecundarios.titulo}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {premiosSecundarios.numeros.map((num) => (
+                          <span
+                            key={num}
+                            className="bg-yellow-400/8 border border-yellow-400/25 text-yellow-300 font-mono font-bold text-xl rounded-lg px-4 py-1.5"
+                          >
+                            {num}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="text-xs text-gray-500 leading-relaxed">
+                        {contenido.premios_sec_descripcion
+                          .split("{monto}")
+                          .map((parte, i, partes) => (
+                            <span key={i}>
+                              {parte}
+                              {i < partes.length - 1 && (
+                                <span className="font-semibold text-gray-300">
+                                  {premiosSecundarios.monto}
+                                </span>
+                              )}
+                            </span>
+                          ))}
+                      </p>
+                    </div>
+                  )}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Sección FAQ */}
+        <section className="order-3 lg:order-2 py-20 border-t-2 border-[#171717]">
+          <div className="container mx-auto px-4 max-w-xl">
+            <span className="kicker mb-4">Info</span>
+            <h2 className="text-4xl lg:text-5xl font-display font-bold tracking-tight uppercase text-[#171717] mb-10">
+              {contenido.faq_titulo}
+            </h2>
+
+            <div className="space-y-6">
+              <div className="bg-white border-2 border-[#171717] hard-shadow-sm p-5">
+                <p className="text-xs font-display font-semibold uppercase tracking-[0.18em] text-neutral-500 mb-2">
+                  {contenido.faq_pregunta_fecha}
+                </p>
+                <div className="border-l-[6px] border-[#72BF44] pl-4">
+                  <span className="text-[#171717] text-lg font-semibold">
+                    {sorteo?.fecha_sorteo
+                      ? new Date(
+                          sorteo.fecha_sorteo + "T12:00:00",
+                        ).toLocaleDateString("es-AR", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })
+                      : "Próximamente"}
+                  </span>
                 </div>
-                <p className="text-xs text-gray-500 leading-relaxed">
-                  {contenido.premios_sec_descripcion.split("{monto}").map((parte, i, partes) => (
-                    <span key={i}>
-                      {parte}
-                      {i < partes.length - 1 && (
-                        <span className="font-semibold text-gray-300">{premiosSecundarios.monto}</span>
-                      )}
+              </div>
+
+              <div className="bg-white border-2 border-[#171717] hard-shadow-sm p-5">
+                <p className="text-xs font-display font-semibold uppercase tracking-[0.18em] text-neutral-500 mb-2">
+                  {contenido.faq_pregunta_ganador}
+                </p>
+                <Link
+                  href={contenido.faq_link_quiniela}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="border-l-[6px] border-[#72BF44] pl-4 group">
+                    <span className="text-[#171717] text-base font-semibold group-hover:text-[#5da336] transition-colors duration-150 underline decoration-[#72BF44] decoration-2 underline-offset-4">
+                      {contenido.faq_respuesta_ganador}
                     </span>
-                  ))}
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Sección Consultá tus números */}
+        <section className="order-1 lg:order-3 py-20 border-t-2 border-[#171717] bg-graphite">
+          <div className="container mx-auto px-4 max-w-xl">
+            <div className="mb-8">
+              <span className="kicker kicker-on-dark mb-3">
+                {contenido.consulta_kicker}
+              </span>
+              <h2 className="text-4xl lg:text-5xl font-display font-bold tracking-tight uppercase text-white mb-3">
+                {contenido.consulta_titulo}
+              </h2>
+              <p className="text-neutral-400 text-sm">
+                {contenido.consulta_descripcion}
+              </p>
+            </div>
+
+            <form
+              onSubmit={consultarMisNumeros}
+              className="flex flex-col sm:flex-row gap-3 mb-6"
+            >
+              <input
+                type="email"
+                value={consultaEmail}
+                onChange={(e) => setConsultaEmail(e.target.value)}
+                placeholder={contenido.consulta_placeholder}
+                disabled={consultaLoading}
+                className="flex-1 bg-white border-2 border-[#171717] text-[#171717] placeholder:text-neutral-400 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#72BF44] transition-shadow disabled:opacity-50"
+              />
+              <button
+                type="submit"
+                disabled={consultaLoading || !consultaEmail.trim()}
+                className="btn-neon px-7 py-3 text-sm disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none whitespace-nowrap"
+              >
+                {consultaLoading ? "Buscando..." : contenido.consulta_boton}
+              </button>
+            </form>
+
+            {consultaError && (
+              <div className="bg-white border-2 border-red-600 border-l-[6px] p-4 text-center text-red-700 text-sm mb-4">
+                {consultaError}
+              </div>
+            )}
+
+            {consultaResultados !== null && consultaResultados.length === 0 && (
+              <div className="bg-white border-2 border-[#171717] hard-shadow-sm p-6 text-center">
+                <p className="text-neutral-700 text-sm font-medium">
+                  {contenido.consulta_vacio}
+                </p>
+                <p className="text-neutral-500 text-xs mt-2">
+                  {contenido.consulta_vacio_nota}
                 </p>
               </div>
             )}
-          </div>
-        </div>
-      </section>
-      )}
 
-      {/* Sección FAQ */}
-      <section className="order-3 lg:order-2 py-16 border-t border-gray-900">
-        <div className="container mx-auto px-4 max-w-xl">
-          <h2 className="text-4xl lg:text-5xl font-display tracking-wider text-white mb-10">
-            {contenido.faq_titulo}
-          </h2>
-
-          <div className="space-y-8">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-gray-600 mb-3">
-                {contenido.faq_pregunta_fecha}
-              </p>
-              <div className="border-l-2 border-[#ff0040]/40 pl-4">
-                <span className="text-white text-lg font-medium">
-                  {sorteo?.fecha_sorteo
-                    ? new Date(sorteo.fecha_sorteo + "T12:00:00").toLocaleDateString("es-AR", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                      })
-                    : "Próximamente"}
-                </span>
-              </div>
-            </div>
-
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-gray-600 mb-3">
-                {contenido.faq_pregunta_ganador}
-              </p>
-              <Link
-                href={contenido.faq_link_quiniela}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="border-l-2 border-[#ff0040]/40 pl-4 hover:border-[#ff0040] transition-colors duration-200">
-                  <span className="text-[#ff0040] text-base font-medium">
-                    {contenido.faq_respuesta_ganador}
-                  </span>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Sección Consultá tus números */}
-      <section className="order-1 lg:order-3 py-16 border-t border-gray-900">
-        <div className="container mx-auto px-4 max-w-xl">
-          <div className="mb-8">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#ff0040] mb-3">
-              {contenido.consulta_kicker}
-            </p>
-            <h2 className="text-4xl lg:text-5xl font-display tracking-wider text-white mb-2">
-              {contenido.consulta_titulo}
-            </h2>
-            <p className="text-gray-500 text-sm">
-              {contenido.consulta_descripcion}
-            </p>
-          </div>
-
-          <form
-            onSubmit={consultarMisNumeros}
-            className="flex flex-col sm:flex-row gap-2 mb-6"
-          >
-            <input
-              type="email"
-              value={consultaEmail}
-              onChange={(e) => setConsultaEmail(e.target.value)}
-              placeholder={contenido.consulta_placeholder}
-              disabled={consultaLoading}
-              className="flex-1 bg-[#111] border border-gray-800 text-white placeholder:text-gray-600 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#ff0040]/60 focus:ring-1 focus:ring-[#ff0040]/30 transition-colors disabled:opacity-50"
-            />
-            <button
-              type="submit"
-              disabled={consultaLoading || !consultaEmail.trim()}
-              className="btn-neon px-7 py-3 rounded-lg text-sm font-semibold tracking-wide disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none whitespace-nowrap"
-            >
-              {consultaLoading ? "Buscando..." : contenido.consulta_boton}
-            </button>
-          </form>
-
-          {consultaError && (
-            <div className="bg-red-950/30 border border-red-900/40 rounded-lg p-4 text-center text-red-400 text-sm mb-4">
-              {consultaError}
-            </div>
-          )}
-
-          {consultaResultados !== null && consultaResultados.length === 0 && (
-            <div className="bg-[#111] border border-gray-800 rounded-xl p-6 text-center">
-              <p className="text-gray-500 text-sm">
-                {contenido.consulta_vacio}
-              </p>
-              <p className="text-gray-600 text-xs mt-2">
-                {contenido.consulta_vacio_nota}
-              </p>
-            </div>
-          )}
-
-          {consultaResultados !== null && consultaResultados.length > 0 && (
-            <div className="space-y-4">
-              {consultaResultados.map((p) => (
-                <div key={p.id} className="bg-[#111] border border-gray-800 rounded-xl p-5">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-                    <div>
-                      <p className="text-white font-semibold">{p.nombre}</p>
-                      <p className="text-gray-500 text-xs mt-0.5">{p.sorteo_nombre}</p>
+            {consultaResultados !== null && consultaResultados.length > 0 && (
+              <div className="space-y-4">
+                {consultaResultados.map((p) => (
+                  <div
+                    key={p.id}
+                    className="bg-white border-2 border-[#171717] hard-shadow-sm p-5"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                      <div>
+                        <p className="text-[#171717] font-display font-bold uppercase tracking-tight">
+                          {p.nombre}
+                        </p>
+                        <p className="text-neutral-500 text-xs mt-0.5">
+                          {p.sorteo_nombre}
+                        </p>
+                      </div>
+                      <span className="text-xs text-neutral-400 tabular-nums">
+                        {new Date(p.created_at).toLocaleDateString("es-AR", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })}
+                      </span>
                     </div>
-                    <span className="text-xs text-gray-600">
-                      {new Date(p.created_at).toLocaleDateString("es-AR", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                      })}
-                    </span>
+                    <p className="text-xs font-display font-semibold uppercase tracking-[0.18em] text-neutral-500 mb-3">
+                      Tus {p.cantidad_chances} números asignados
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {[...p.numeros_asignados]
+                        .sort((a, b) => a - b)
+                        .map((numero) => (
+                          <span
+                            key={numero}
+                            className="bg-[#72BF44] text-[#171717] font-mono font-bold px-3 py-1 text-sm border-2 border-[#171717] tabular-nums"
+                          >
+                            {numero}
+                          </span>
+                        ))}
+                    </div>
                   </div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-gray-600 mb-3">
-                    Tus {p.cantidad_chances} números asignados
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {[...p.numeros_asignados]
-                      .sort((a, b) => a - b)
-                      .map((numero) => (
-                        <span
-                          key={numero}
-                          className="bg-[#ff0040]/10 text-[#ff0040] font-mono font-semibold px-3 py-1 rounded text-sm border border-[#ff0040]/15"
-                        >
-                          {numero}
-                        </span>
-                      ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
       </div>
 
       {/* Ganadores Express */}
-      {sorteo && <GanadoresExpress sorteoId={sorteo.id} contenido={contenido} />}
+      {sorteo && (
+        <GanadoresExpress sorteoId={sorteo.id} contenido={contenido} />
+      )}
 
       {/* Ganadores Pasados */}
       <GanadoresPasados contenido={contenido} />
@@ -787,46 +828,50 @@ export default function LandingPage() {
       <RedesSociales contenido={contenido} />
 
       {/* QR */}
-      <div className="bg-black flex flex-col items-center gap-3 py-10">
-        <img
-          src="/sosa-qr.jpeg"
-          alt="Código QR"
-          className="w-32 h-32 rounded-lg opacity-90"
-        />
-        <p className="text-gray-400 text-xs font-semibold tracking-wide uppercase">
-          Escanea y participa gratis
+      {/* <div className="bg-dark-gradient flex flex-col items-center gap-4 py-14 border-t-2 border-[#171717]">
+        <div className="bg-white border-2 border-[#171717] hard-shadow p-3">
+          <img
+            src="/delfos-qr.jpeg"
+            alt="Código QR"
+            className="w-32 h-32"
+          />
+        </div>
+        <p className="text-[#171717] text-xs font-display font-semibold tracking-[0.18em] uppercase">
+          Escaneá y participá gratis
         </p>
-      </div>
+      </div> */}
 
       {/* Footer */}
-      <footer className="bg-black border-t border-gray-900 py-10">
+      <footer className="bg-graphite border-t-2 border-[#72BF44] py-12">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <span className="text-base font-semibold text-white tracking-wide">
+            <span className="text-lg font-display font-bold uppercase tracking-tight text-white">
               {contenido.marca}
             </span>
-            <div className="flex space-x-6">
+            <div className="flex space-x-8">
               <Link
                 href={contenido.whatsapp_url}
-                className="text-gray-600 hover:text-gray-300 transition-colors text-sm"
+                className="text-neutral-400 hover:text-[#72BF44] transition-colors text-sm font-medium"
               >
                 Contacto
               </Link>
               <Link
                 href="/terminos"
-                className="text-gray-600 hover:text-gray-300 transition-colors text-sm"
+                className="text-neutral-400 hover:text-[#72BF44] transition-colors text-sm font-medium"
               >
                 Términos
               </Link>
             </div>
           </div>
-          <div className="border-t border-gray-900 mt-6 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2">
-            <p className="text-gray-700 text-xs">{contenido.footer_copyright}</p>
+          <div className="border-t border-neutral-800 mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p className="text-neutral-500 text-xs">
+              {contenido.footer_copyright}
+            </p>
             <Link
               href="https://linktr.ee/deweertstudio"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-700 hover:text-gray-500 transition-colors text-xs"
+              className="text-neutral-500 hover:text-neutral-300 transition-colors text-xs"
             >
               Desarrollado por De Weert Studio
             </Link>

@@ -96,7 +96,7 @@ export function EditarCuentaTransferenciaModal({
               id="alias"
               value={aliasValue}
               onChange={(e) => setAliasValue(e.target.value)}
-              placeholder="Ej: sosamotos"
+              placeholder="Ej: ariasezequiel"
               className="bg-gray-800 border-gray-600 text-white"
               maxLength={100}
             />

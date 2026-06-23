@@ -1833,12 +1833,12 @@ export async function obtenerConfiguracionTransferencia(): Promise<Configuracion
 
     const map = Object.fromEntries(data?.map((r: { clave: string; valor: string }) => [r.clave, r.valor]) ?? [])
     return {
-      alias: map["alias_transferencia"] ?? "sosamotos",
-      titular: map["titular_transferencia"] ?? "Agustín Sosa",
+      alias: map["alias_transferencia"] ?? "ariasezequiel",
+      titular: map["titular_transferencia"] ?? "Arias Ezequiel",
     }
   } catch (error) {
     console.error("Error obteniendo configuración de transferencia:", error)
-    return { alias: "sosamotos", titular: "Agustín Sosa" }
+    return { alias: "ariasezequiel", titular: "Arias Ezequiel" }
   }
 }
 

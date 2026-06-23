@@ -69,18 +69,18 @@ export default function IphoneCarousel() {
 
   return (
     <div className="relative w-full max-w-md sm:max-w-lg md:max-w-2xl mx-auto">
-      <div className="overflow-hidden rounded-xl" ref={emblaRef as any}>
+      <div className="overflow-hidden border-2 border-[#171717] hard-shadow bg-white" ref={emblaRef as any}>
         <div className="flex">
           {finalSlides.map((src, idx) => (
             <div key={idx} className="min-w-full flex-shrink-0">
-              <div className="relative rounded-xl overflow-hidden shadow-2xl h-[500px] sm:h-[600px] md:h-[700px]">
+              <div className="relative overflow-hidden h-[500px] sm:h-[600px] md:h-[700px]">
                 {/* Imagen de fondo difuminada para llenar los espacios */}
                 <div className="absolute inset-0">
                   <Image
                     src={src}
                     alt=""
                     fill
-                    className="object-cover blur-2xl scale-110 opacity-50"
+                    className="object-cover blur-2xl scale-110 opacity-30"
                   />
                 </div>
                 {/* Imagen principal */}
@@ -103,29 +103,32 @@ export default function IphoneCarousel() {
       {finalSlides.length > 1 && (
         <>
           <button
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-200 z-10"
+            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white border-2 border-[#171717] hover:bg-[#72BF44] text-[#171717] p-2 transition-colors duration-150 z-10"
             onClick={scrollPrev}
+            aria-label="Anterior"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-200 z-10"
+            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white border-2 border-[#171717] hover:bg-[#72BF44] text-[#171717] p-2 transition-colors duration-150 z-10"
             onClick={scrollNext}
+            aria-label="Siguiente"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
 
           {/* Dots indicadores */}
-          <div className="flex justify-center mt-4 space-x-2">
+          <div className="flex justify-center mt-5 space-x-2">
             {finalSlides.map((_, idx) => (
               <button
                 key={idx}
-                className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                className={`h-3 border-2 border-[#171717] transition-all duration-200 ${
                   idx === currentIndex
-                    ? "bg-red-500 glow-red"
-                    : "bg-gray-400 hover:bg-gray-300"
+                    ? "bg-[#72BF44] w-7"
+                    : "bg-white hover:bg-neutral-200 w-3"
                 }`}
                 onClick={() => emblaApi?.scrollTo(idx)}
+                aria-label={`Ir a imagen ${idx + 1}`}
               />
             ))}
           </div>

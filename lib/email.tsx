@@ -2,23 +2,23 @@ import { Resend } from "resend"
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-// Remitente de marca (configurable vía env). Dominio: agustinsosa.com
+// Remitente de marca (configurable vía env).
 const EMAIL_FROM =
-  process.env.EMAIL_FROM || "Sosa Motos <hola@agustinsosa.com>"
+  process.env.EMAIL_FROM || "Delfos Constructora <hola@delfosconstructora.com.ar>"
 
 // Dirección a la que el usuario puede responder (mejora la confianza/deliverability).
-const EMAIL_REPLY_TO = process.env.EMAIL_REPLY_TO || "hola@agustinsosa.com"
+const EMAIL_REPLY_TO = process.env.EMAIL_REPLY_TO || "hola@delfosconstructora.com.ar"
 
 /* ------------------------------------------------------------------ */
-/*  Paleta de marca (acorde a la landing: rojo + negro + blanco)       */
+/*  Paleta de marca (acorde a la landing: verde + negro + blanco)      */
 /* ------------------------------------------------------------------ */
 const C = {
   bg: "#0a0a0a",
   card: "#141414",
   cardSoft: "#1b1b1b",
   border: "#262626",
-  red: "#ff0040",
-  redDark: "#cc0033",
+  red: "#72BF44",
+  redDark: "#5da336",
   text: "#e5e5e5",
   textDim: "#9ca3af",
   white: "#ffffff",
@@ -101,7 +101,7 @@ function baseEmail(opts: {
             <tr>
               <td style="background:linear-gradient(135deg,#000000 0%,#1a1a1a 100%);padding:34px 30px 28px;text-align:center;border-bottom:2px solid ${C.red};">
                 <div style="display:inline-block;font-size:22px;font-weight:900;letter-spacing:1px;color:${C.white};">
-                  SOSA <span style="color:${C.red};">MOTOS</span> 🏍️
+                  DELFOS <span style="color:${C.red};">CONSTRUCTORA</span>
                 </div>
                 <div style="height:3px;width:54px;margin:14px auto 18px;background:${C.red};border-radius:3px;box-shadow:0 0 14px rgba(255,0,64,0.5);"></div>
                 ${
@@ -126,9 +126,9 @@ function baseEmail(opts: {
             <!-- Footer -->
             <tr>
               <td style="padding:24px 30px;border-top:1px solid ${C.border};text-align:center;">
-                <p style="margin:0 0 4px;color:${C.white};font-size:13px;font-weight:700;letter-spacing:.5px;">SOSA <span style="color:${C.red};">MOTOS</span> 🏍️</p>
+                <p style="margin:0 0 4px;color:${C.white};font-size:13px;font-weight:700;letter-spacing:.5px;">DELFOS <span style="color:${C.red};">CONSTRUCTORA</span></p>
                 <p style="margin:0;color:${C.textDim};font-size:12px;">¿Tenés alguna duda? Respondé a este email y te ayudamos.</p>
-                <p style="margin:6px 0 0;color:#5f5f5f;font-size:12px;">© ${new Date().getFullYear()} Sosa Motos. Todos los derechos reservados.</p>
+                <p style="margin:6px 0 0;color:#5f5f5f;font-size:12px;">© ${new Date().getFullYear()} Delfos Constructora. Todos los derechos reservados.</p>
               </td>
             </tr>
 

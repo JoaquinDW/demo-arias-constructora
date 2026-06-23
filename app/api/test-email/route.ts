@@ -28,7 +28,7 @@ export async function POST(request: Request) {
 
     // Datos de prueba
     const datosConfirmacion = {
-      nombre: "Agustin SOSA",
+      nombre: "Arias Ezequiel",
       email: TEST_EMAIL,
       cantidadChances: 3,
       numerosAsignados: [7613, 7614, 7615],
@@ -38,7 +38,7 @@ export async function POST(request: Request) {
     }
 
     const datosTransferenciaAprobada = {
-      nombre: "Agustin SOSA",
+      nombre: "Arias Ezequiel",
       email: TEST_EMAIL,
       cantidadChances: 3,
       numerosAsignados: [7613, 7614, 7615],
@@ -48,7 +48,7 @@ export async function POST(request: Request) {
     }
 
     const datosTransferenciaRechazada = {
-      nombre: "Agustin SOSA",
+      nombre: "Arias Ezequiel",
       email: TEST_EMAIL,
       cantidadChances: 3,
       precioPagado: 15000,

@@ -28,8 +28,8 @@ export function AdminLogin({ onLogin }: AdminLoginProps) {
 
     // Credenciales hardcodeadas
     if (
-      credentials.username === "sosamotos" &&
-      credentials.password === "SosaMotos2025!"
+      credentials.username === "delfos" &&
+      credentials.password === "Delfos2025!"
     ) {
       localStorage.setItem("admin_authenticated", "true")
       onLogin()
